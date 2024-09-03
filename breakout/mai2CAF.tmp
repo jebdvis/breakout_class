@@ -1,0 +1,196 @@
+[gd_scene load_steps=12 format=3 uid="uid://dlf8vajc06nua"]
+
+[ext_resource type="Script" path="res://Actors/ball.gd" id="1_id2dd"]
+[ext_resource type="Script" path="res://Actors/paddle.gd" id="2_xyqfy"]
+[ext_resource type="PackedScene" uid="uid://db3ajuotu44ya" path="res://Actors/brick.tscn" id="3_vdqp3"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_8duk7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_clp7y"]
+size = Vector2(30, 30)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_exukn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vmv13"]
+size = Vector2(100, 30)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6i54q"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ujt25"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_a3dpd"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_s7yya"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Ball" type="CharacterBody2D" parent="."]
+position = Vector2(330.699, 406.712)
+motion_mode = 1
+script = ExtResource("1_id2dd")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+scale = Vector2(30, 30)
+texture = SubResource("CanvasTexture_8duk7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("RectangleShape2D_clp7y")
+
+[node name="Paddle" type="CharacterBody2D" parent="." groups=["Paddle"]]
+position = Vector2(597.126, 594.219)
+motion_mode = 1
+script = ExtResource("2_xyqfy")
+
+[node name="Sprite2D" type="Sprite2D" parent="Paddle"]
+scale = Vector2(100, 30)
+texture = SubResource("CanvasTexture_exukn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paddle"]
+shape = SubResource("RectangleShape2D_vmv13")
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+position = Vector2(-1.49944, 329.833)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_6i54q")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2(1153.47, 315.026)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_ujt25")
+
+[node name="TopWall" type="StaticBody2D" parent="."]
+position = Vector2(606, -1.47332)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_a3dpd")
+
+[node name="BottomWall" type="StaticBody2D" parent="."]
+position = Vector2(611, 649.529)
+scale = Vector2(0.055196, 0.394802)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
+shape = SubResource("WorldBoundaryShape2D_s7yya")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Brick" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(96, 80)
+
+[node name="Brick7" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(95.9213, 40.174)
+
+[node name="Brick6" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(96, 120)
+
+[node name="Brick2" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(176, 80)
+
+[node name="Brick3" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(176, 120)
+
+[node name="Brick4" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(176, 40)
+
+[node name="Brick8" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(256.079, 80)
+
+[node name="Brick9" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(256, 40.174)
+
+[node name="Brick10" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(256.079, 120)
+
+[node name="Brick11" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(336.079, 80)
+
+[node name="Brick12" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(336.079, 120)
+
+[node name="Brick13" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(336.079, 40)
+
+[node name="Brick14" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(416.079, 80)
+
+[node name="Brick15" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(416, 40.174)
+
+[node name="Brick16" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(416.079, 120)
+
+[node name="Brick17" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(496.079, 80)
+
+[node name="Brick18" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(496.079, 120)
+
+[node name="Brick19" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(496.079, 40)
+
+[node name="Brick20" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(576.079, 80)
+
+[node name="Brick21" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(576, 40.174)
+
+[node name="Brick22" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(576.079, 120)
+
+[node name="Brick23" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(656.079, 80)
+
+[node name="Brick24" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(656.079, 120)
+
+[node name="Brick25" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(656.079, 40)
+
+[node name="Brick26" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(736.079, 80)
+
+[node name="Brick27" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(736, 40.174)
+
+[node name="Brick28" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(736.079, 120)
+
+[node name="Brick29" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(816.079, 80)
+
+[node name="Brick30" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(816.079, 120)
+
+[node name="Brick31" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(816.079, 40)
+
+[node name="Brick32" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(896.079, 80)
+
+[node name="Brick33" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(896, 40.174)
+
+[node name="Brick34" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(896.079, 120)
+
+[node name="Brick35" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(976.079, 80)
+
+[node name="Brick36" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(976.079, 120)
+
+[node name="Brick37" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(976.079, 40)
+
+[node name="Brick38" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(1056, 80)
+
+[node name="Brick39" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(1056, 120)
+
+[node name="Brick40" parent="Node2D" instance=ExtResource("3_vdqp3")]
+position = Vector2(1056, 40)
