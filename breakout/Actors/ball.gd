@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal collision_occurred
 
 @export var speed: float = 3.0
 @export var max_speed: float = 10.0
@@ -31,6 +32,7 @@ func _physics_process(delta: float) -> void:
 			collision.get_collider().queue_free()
 			current_score += 10
 			score_label.text = "Score: " + str(current_score)
+			collision_occurred.emit()
 			
 		if collision.get_collider().is_in_group("Paddle"):
 			var paddle_x = collision.get_collider().position.x -  PADDLE_WIDTH/2
@@ -40,8 +42,9 @@ func _physics_process(delta: float) -> void:
 			forward = Vector2.from_angle(bounce_angle)
 			
 		if collision.get_collider().is_in_group("game_over"):
-			get_tree
 			is_running = false
 			start_label.visible = true
 			start_label.text = "GAME OVER"
+			await get_tree().create_timer(1.0).timeout
+			get_tree().reload_current_scene()
 			

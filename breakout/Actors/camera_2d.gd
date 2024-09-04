@@ -2,12 +2,12 @@ extends Camera2D
 
 @export var decay := .8
 @export var max_offset := Vector2(100,75)
-@export var max_roll := 0.0
+@export var max_roll := PI
 @export var noise : FastNoiseLite 
-
 var noise_y := 0.0
 var trauma := 0.0
 var trauma_pwr := 3
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,9 +20,9 @@ func add_trauma(amount: float):
 func shake():
 	var amt = pow(trauma, trauma_pwr)
 	noise_y += 1
-	rotation = max_roll * amt * noise.get_noise_2d(noise.seed,noise_y)
-	offset.x = max_offset.x * amt * noise.get_noise_2d(noise.seed*2,noise_y)
-	offset.y = max_offset.y * amt * noise.get_noise_2d(noise.seed*3,noise_y)
+	rotation = max_roll * amt * noise.get_noise_2d(0,noise_y)
+	offset.x = max_offset.x * amt * noise.get_noise_2d(1000,noise_y)
+	offset.y = max_offset.y * amt * noise.get_noise_2d(2000,noise_y)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -35,5 +35,5 @@ func _process(delta: float) -> void:
 		lerp(rotation,0.0,1)
 
 
-func _on_collision_shape_2d_tree_entered() -> void:
+func _on_ball_collision_occurred():
 	add_trauma(1)
