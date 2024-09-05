@@ -58,10 +58,12 @@ shape = SubResource("RectangleShape2D_clp7y")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Ball"]
 amount = 7000
+lifetime = 3.0
 texture = SubResource("CanvasTexture_tdx2q")
 emission_shape = 1
 emission_sphere_radius = 22.1
 spread = 126.82
+gravity = Vector2(0, 300)
 angular_velocity_min = 3.2
 angular_velocity_max = 10.25
 orbit_velocity_curve = SubResource("Curve_rk2gh")
@@ -69,7 +71,7 @@ scale_amount_min = 0.0
 scale_amount_max = 4.0
 color = Color(0.883333, 0, 1, 1)
 hue_variation_min = -1.0
-hue_variation_max = -0.05
+hue_variation_max = 1.0
 hue_variation_curve = SubResource("Curve_h2y3h")
 
 [node name="Paddle" type="CharacterBody2D" parent="." groups=["Paddle"]]
@@ -241,13 +243,14 @@ theme_override_font_sizes/normal_font_size = 100
 text = "SCORE: 0"
 
 [node name="Start Text" type="RichTextLabel" parent="."]
-offset_left = 447.606
-offset_top = 366.339
-offset_right = 1421.61
-offset_bottom = 576.339
+offset_left = 404.0
+offset_top = 329.0
+offset_right = 1378.0
+offset_bottom = 807.0
 scale = Vector2(0.354984, 0.386659)
 theme_override_font_sizes/normal_font_size = 90
-text = "[CLICK TO START]"
+bbcode_enabled = true
+text = "[center][CLICK TO START][/center]"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 323)

@@ -17,9 +17,18 @@ func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("Click_Window"):
+	#end_game: check if all bricks have been hit
+	if $"../Bricks".get_child_count() == 0:
+		is_running = false
+		start_label.text = "[center]You Win!\nClick to Play Again.[/center]"
+		start_label.visible = true
+		
+		
+	if Input.is_action_just_pressed("Click_Window") && $"../Bricks".get_child_count() > 0:
 		is_running = true
 		start_label.visible = false
+	elif Input.is_action_just_pressed("Click_Window") && $"../Bricks".get_child_count() == 0:
+		get_tree().reload_current_scene()
 	if !is_running:
 		return
 	
@@ -33,6 +42,7 @@ func _physics_process(delta: float) -> void:
 			current_score += 10
 			score_label.text = "Score: " + str(current_score)
 			collision_occurred.emit()
+			#print($"../Bricks".get_child_count())
 			
 		if collision.get_collider().is_in_group("Paddle"):
 			var paddle_x = collision.get_collider().position.x -  PADDLE_WIDTH/2
@@ -44,7 +54,7 @@ func _physics_process(delta: float) -> void:
 		if collision.get_collider().is_in_group("game_over"):
 			is_running = false
 			start_label.visible = true
-			start_label.text = "GAME OVER"
+			start_label.text = "[center]GAME OVER[/center]"
 			await get_tree().create_timer(1.0).timeout
 			get_tree().reload_current_scene()
 			
