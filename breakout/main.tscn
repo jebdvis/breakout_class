@@ -1,10 +1,11 @@
 [gd_scene load_steps=19 format=3 uid="uid://dlf8vajc06nua"]
 
 [ext_resource type="Script" path="res://Actors/ball.gd" id="1_id2dd"]
+[ext_resource type="Texture2D" uid="uid://cekos1pbjtkbo" path="res://Assets/Dollar.png" id="2_ktqg0"]
 [ext_resource type="Script" path="res://Actors/paddle.gd" id="2_xyqfy"]
 [ext_resource type="PackedScene" uid="uid://db3ajuotu44ya" path="res://Actors/brick.tscn" id="3_vdqp3"]
 [ext_resource type="Script" path="res://Actors/camera_2d.gd" id="4_72s8n"]
-[ext_resource type="AudioStream" uid="uid://cyjna3v5oxk7e" path="res://mixkit-epic-impact-afar-explosion-2782.wav" id="5_gcah1"]
+[ext_resource type="AudioStream" uid="uid://cyjna3v5oxk7e" path="res://Assets/mixkit-epic-impact-afar-explosion-2782.wav" id="5_gcah1"]
 [ext_resource type="Script" path="res://audio_stream_player.gd" id="6_c5ma3"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_8duk7"]
@@ -12,17 +13,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_clp7y"]
 size = Vector2(30, 30)
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_tdx2q"]
-
 [sub_resource type="Curve" id="Curve_rk2gh"]
-min_value = -500.0
-max_value = 500.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 357.143), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="Curve" id="Curve_h2y3h"]
-min_value = -1.0
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.38764, 0.120879), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_yxo7a"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.542857, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.00613844), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_exukn"]
@@ -57,22 +53,21 @@ texture = SubResource("CanvasTexture_8duk7")
 shape = SubResource("RectangleShape2D_clp7y")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Ball"]
-amount = 7000
-lifetime = 3.0
-texture = SubResource("CanvasTexture_tdx2q")
+amount = 30
+lifetime = 2.0
+randomness = 0.15
+texture = ExtResource("2_ktqg0")
 emission_shape = 1
-emission_sphere_radius = 22.1
+emission_sphere_radius = 7.77
 spread = 126.82
 gravity = Vector2(0, 300)
-angular_velocity_min = 3.2
-angular_velocity_max = 10.25
+angular_velocity_min = -470.92
+angular_velocity_max = 354.16
 orbit_velocity_curve = SubResource("Curve_rk2gh")
+angle_min = -20.0
+angle_max = 20.0
 scale_amount_min = 0.0
-scale_amount_max = 4.0
-color = Color(0.883333, 0, 1, 1)
-hue_variation_min = -1.0
-hue_variation_max = 1.0
-hue_variation_curve = SubResource("Curve_h2y3h")
+scale_amount_curve = SubResource("Curve_yxo7a")
 
 [node name="Paddle" type="CharacterBody2D" parent="." groups=["Paddle"]]
 position = Vector2(597.126, 594.219)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqvwjuactww8y"
-path="res://.godot/imported/cowtoolsirl.jpg-a0f142c48ffa5258775fd8f68f11f2da.ctex"
+uid="uid://cxn472asht328"
+path="res://.godot/imported/Deposit_Brick.png-9a2ce0df0ee36ee11767a8b471c7df11.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cowtoolsirl.jpg"
-dest_files=["res://.godot/imported/cowtoolsirl.jpg-a0f142c48ffa5258775fd8f68f11f2da.ctex"]
+source_file="res://Assets/Deposit_Brick.png"
+dest_files=["res://.godot/imported/Deposit_Brick.png-9a2ce0df0ee36ee11767a8b471c7df11.ctex"]
 
 [params]
 

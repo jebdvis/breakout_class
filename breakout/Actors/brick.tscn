@@ -1,16 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://db3ajuotu44ya"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_k2d8b"]
+[ext_resource type="Texture2D" uid="uid://cxn472asht328" path="res://Assets/Deposit_Brick.png" id="1_0cqu0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_334pn"]
-size = Vector2(10.1018, 9.79183)
+size = Vector2(64, 32)
 
 [node name="Brick" type="CharacterBody2D" groups=["Bricks"]]
-scale = Vector2(6.36, 3.2)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(10.1055, 9.23091)
-texture = SubResource("CanvasTexture_k2d8b")
+texture_filter = 1
+texture = ExtResource("1_0cqu0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.163623, -0.0818381)
 shape = SubResource("RectangleShape2D_334pn")
