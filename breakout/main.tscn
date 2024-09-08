@@ -1,12 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://dlf8vajc06nua"]
+[gd_scene load_steps=18 format=3 uid="uid://dlf8vajc06nua"]
 
 [ext_resource type="Script" path="res://Actors/ball.gd" id="1_id2dd"]
 [ext_resource type="Texture2D" uid="uid://cekos1pbjtkbo" path="res://Assets/Dollar.png" id="2_ktqg0"]
 [ext_resource type="Script" path="res://Actors/paddle.gd" id="2_xyqfy"]
+[ext_resource type="Script" path="res://cpu_particles_2d.gd" id="3_rnoty"]
 [ext_resource type="PackedScene" uid="uid://db3ajuotu44ya" path="res://Actors/brick.tscn" id="3_vdqp3"]
 [ext_resource type="Script" path="res://Actors/camera_2d.gd" id="4_72s8n"]
-[ext_resource type="AudioStream" uid="uid://cyjna3v5oxk7e" path="res://Assets/mixkit-epic-impact-afar-explosion-2782.wav" id="5_gcah1"]
-[ext_resource type="Script" path="res://audio_stream_player.gd" id="6_c5ma3"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_8duk7"]
 
@@ -68,6 +67,7 @@ angle_min = -20.0
 angle_max = 20.0
 scale_amount_min = 0.0
 scale_amount_curve = SubResource("Curve_yxo7a")
+script = ExtResource("3_rnoty")
 
 [node name="Paddle" type="CharacterBody2D" parent="." groups=["Paddle"]]
 position = Vector2(597.126, 594.219)
@@ -252,9 +252,6 @@ position = Vector2(576, 323)
 script = ExtResource("4_72s8n")
 noise = SubResource("FastNoiseLite_5jtqf")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_gcah1")
-script = ExtResource("6_c5ma3")
-
+[connection signal="collision_occurred" from="Ball" to="Ball/CPUParticles2D" method="_on_ball_collision_occurred"]
 [connection signal="collision_occurred" from="Ball" to="Camera2D" method="_on_ball_collision_occurred"]
-[connection signal="collision_occurred" from="Ball" to="AudioStreamPlayer" method="_on_ball_collision_occurred"]
+[connection signal="game_ended" from="Ball" to="Ball/CPUParticles2D" method="_on_ball_game_ended"]

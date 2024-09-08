@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal collision_occurred
+signal game_ended
 
 @export var speed: float = 100.0
 @export var max_speed: float = 600.0
@@ -11,19 +12,27 @@ var forward: Vector2 = Vector2(1,1).normalized()
 const PADDLE_WIDTH: float = 100.0
 var current_score: int = 0
 var is_running = false
+var hit_sound = preload("res://Assets/cash-register-purchase-87313.mp3")
+
+
+func play_new_sound(sound: AudioStream):
+	var new_audio_player = AudioStreamPlayer.new()
+	add_child(new_audio_player)
+	new_audio_player.stream = sound
+	new_audio_player.play()
+	
 
 func _ready() -> void:
 	#velocity = Vector2(1,1).normalized()
 	pass
 
 func _physics_process(delta: float) -> void:
-	print(speed)
-	
 	#end_game: check if all bricks have been hit
 	if $"../Bricks".get_child_count() == 0:
 		is_running = false
 		start_label.text = "[center]You Win!\nClick to Play Again.[/center]"
 		start_label.visible = true
+		game_ended.emit()
 		
 		
 	if Input.is_action_just_pressed("Click_Window") && $"../Bricks".get_child_count() > 0:
@@ -44,7 +53,7 @@ func _physics_process(delta: float) -> void:
 			current_score += 10
 			score_label.text = "Score: " + str(current_score)
 			collision_occurred.emit()
-			#print($"../Bricks".get_child_count())
+			play_new_sound(hit_sound)
 			
 		if collision.get_collider().is_in_group("Paddle"):
 			var paddle_x = collision.get_collider().position.x -  PADDLE_WIDTH/2
