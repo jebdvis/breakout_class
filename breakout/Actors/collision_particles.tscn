@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bx0l4mstlndfl"]
+
+[ext_resource type="Texture2D" uid="uid://cekos1pbjtkbo" path="res://Assets/Dollar.png" id="1_ucgln"]
+[ext_resource type="Script" path="res://cpu_particles_2d.gd" id="2_5vpee"]
+
+[sub_resource type="Curve" id="Curve_wn2co"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 357.143), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_ie7sd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.542857, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.00613844), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+emitting = false
+amount = 20
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.84
+texture = ExtResource("1_ucgln")
+emission_shape = 1
+emission_sphere_radius = 7.77
+direction = Vector2(0, 0)
+gravity = Vector2(0, 300)
+initial_velocity_min = 0.75
+initial_velocity_max = 172.16
+angular_velocity_min = -331.2
+angular_velocity_max = 381.53
+orbit_velocity_curve = SubResource("Curve_wn2co")
+angle_min = -296.4
+angle_max = 558.2
+scale_amount_curve = SubResource("Curve_ie7sd")
+script = ExtResource("2_5vpee")
