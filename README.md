@@ -1,4 +1,4 @@
 # breakout_class
  
 
-[Link to PDF]("breakout_storyboarding.pdf")
+[View Breakout Storyboarding PDF](breakout_storyboarding.pdf)
